@@ -2,7 +2,7 @@
 layout: post
 title:  "Windows のブートローダを壊してしまって復旧できなかった話"
 date:   2021-01-01 14:00:00 +0900
-categories: windows boot loader
+categories: windows
 ---
 ## 概要
 
