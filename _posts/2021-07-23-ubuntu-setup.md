@@ -478,6 +478,8 @@ $ sudo gem install nokogiri
     - "File"→"Preference"→"Keyboard Shortcuts" で "terminal.focus" で検索
     - "workbench.action.terminal.focus" にショートカットを設定する
     - [Visual Studio Code でエディタとターミナルを移動するショートカットキーの作成 \- Qiita](https://qiita.com/Shun141/items/fbed88abd4518f6d4039)
+- 画面に合わせて表示倍率を調整する
+    - [【VSCode】ウインドウ全体を拡大／縮小／リセットする](http://maniera.xyz/2019/11/29/post-425/)
 - 各種拡張機能インストール
     - C/C++
     - Python

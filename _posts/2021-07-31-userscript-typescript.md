@@ -9,7 +9,9 @@ categories: userscript
 
 UserScript を TypeScript で開発するための方法を記す．
 
-方法はいくつかあるが，GrasyFork などに投稿する際には minify や難読化がかかっていてはいけないので，その点に引っかからないように bundle する必要がある．
+方法はいくつかあるが，GrasyFork などに投稿する際には minify や難読化がかかっていてはいけないので，その点に引っかからないように bundle する必要がある．今回は Rollup を使う．
+
+- [イマドキは Webpack じゃなくて Rollup だ！Terser とともに Rollup を使ってみる \- Neo's World](https://neos21.net/blog/2020/09/04-02.html)
 
 
 ## 環境の準備
