@@ -13,7 +13,7 @@ Ubuntu デスクトップ環境でカスタム URI スキームを用いる方�
 - カスタム URL スキーム
 - 外部プロトコルリクエスト
 - プロトコルハンドラ
-- カスタム プロトコル
+- カスタム プロトコル（本当はプロトコルじゃない気がするけど）
 - カスタム ブラウザ プロトコル
 - Pluggable Protocol Handler
 - Asynchronous Pluggable Protocols
@@ -91,7 +91,7 @@ Version=1.0
 Type=Application
 Name=My Launcher
 Comment=Test MyProtocol
-Exec=bash -lc "python ~/git/workspaces/scripts/myprotocol.py %u"
+Exec=bash -lc "python3 ~/git/workspaces/scripts/myprotocol.py %u"
 MimeType=x-scheme-handler/myprotocol
 Terminal=true
 ```
@@ -118,15 +118,16 @@ $ xdg-mime default myprotocol.desktop x-scheme-handler/myprotocol
 これにより，`~/.config/mimeapps.list` に `x-scheme-handler/myprotocol=myprotocol.desktop` の記述が追加される．
 
 ```sh
-$ xdg-open 'myprotocol://abcd'
-```
-
-```sh
-# 実行権限を付与（いらないかも）
-$ chmod +x myprotocol.desktop
+# 実行権限を付与（←いらないっぽい）
+# $ chmod +x myprotocol.desktop
 $ gio mime x-scheme-handler/myprotocol myprotocol.desktop
 # desktop ファイルでハンドルされる MIME types のキャッシュデータベースを構築する
 $ sudo update-desktop-database
+```
+
+```sh
+# 別のターミナルが開いたら成功
+$ xdg-open 'myprotocol://abcd'
 ```
 
 ターミナルから `xdg-open 'myprotocol://abcd'` すると環境変数など諸々が有効になるが，ブラウザやアクティブティから起動されると環境変数は効かないので，たとえば python とかを動かそうとしても，そのままでは動かない．
@@ -135,6 +136,15 @@ $ sudo update-desktop-database
 
 - [gnome \- URL protocol handlers in basic Ubuntu Desktop \- Ask Ubuntu](https://askubuntu.com/questions/514125/url-protocol-handlers-in-basic-ubuntu-desktop/1023143#1023143)
 - [command line \- Unable to create custom URI scheme on Ubuntu \- Ask Ubuntu](https://askubuntu.com/questions/961745/unable-to-create-custom-uri-scheme-on-ubuntu)
+
+
+### デバッグ
+
+たとえば，上記の例では `python3` にパスが通っていない場合，`xdg-open` で開かれたターミナルは瞬時に消えてしまう．そこで，下記のように sleep か何かを入れることで，ターミナルが消えないようにする．
+
+```sh
+Exec=bash -lc "python3 ~/git/workspaces/scripts/myprotocol.py %u ; sleep 100000;"
+```
 
 
 -----

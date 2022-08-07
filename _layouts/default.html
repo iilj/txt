@@ -7,8 +7,22 @@
 
 <style>
     img {
+        /* 画像を中央寄せする */
+        display: block;
+        margin: auto;
+        /* 画像が大きくなりすぎないようにする */
         max-width: 100%;
+        max-height: calc(800px - (30px * 2));
         border: 1px solid #eee;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin-top: 80px;
     }
 </style>
 <base href="{{ site.url }}{{ site.baseurl }}/dummy/">
